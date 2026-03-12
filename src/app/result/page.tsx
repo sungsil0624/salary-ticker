@@ -87,7 +87,7 @@ export default async function ResultPage({ searchParams }: Props) {
         <section className="rounded-3xl border border-slate-200/70 bg-white p-6 shadow-sm sm:p-8">
           <div className="space-y-3">
             <h2 className="text-lg font-semibold text-slate-900 sm:text-xl">실시간 수익</h2>
-            <p className="text-sm text-slate-500">페이지 체류 시간과 오늘 근무 누적 수익을 함께 표시합니다.</p>
+            <p className="text-sm text-slate-500">페이지 체류 시간과 오늘의 근무 누적 수익을 함께 표시합니다.</p>
             <LiveEarningCounter perSecond={perSecond} />
           </div>
         </section>
