@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { calculateWage, formatWon } from "@/lib/calc";
 import { LiveEarningCounter } from "@/components/live-earning-counter";
 import { PurchaseTimeCalculator } from "@/components/purchase-time-calculator";
@@ -17,6 +18,15 @@ function toNumber(value: string | undefined, fallback: number) {
   const parsed = Number(value);
   return Number.isFinite(parsed) ? parsed : fallback;
 }
+
+export const metadata: Metadata = {
+  title: "연봉 환산 결과",
+  description: "연봉 환산 결과 페이지",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default async function ResultPage({ searchParams }: Props) {
   const params = await searchParams;
