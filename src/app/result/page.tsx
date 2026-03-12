@@ -13,15 +13,19 @@ type Props = {
   }>;
 };
 
+function toNumber(value: string | undefined, fallback: number) {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : fallback;
+}
+
 export default async function ResultPage({ searchParams }: Props) {
   const params = await searchParams;
-  const annualSalary = Number(params.salary ?? 0);
-  const monthlyHours = Number(params.monthlyHours ?? 209);
+  const annualSalary = toNumber(params.salary, 0);
+  const monthlyHours = toNumber(params.monthlyHours, 209);
   const inclusive = params.inclusive === "true";
   const afterTax = params.afterTax === "true";
-  const rawTaxRate = Number(params.taxRate ?? 22);
-  const safeTaxRate =
-    Number.isFinite(rawTaxRate) && rawTaxRate >= 0 ? Math.min(rawTaxRate, 90) : 22;
+  const rawTaxRate = toNumber(params.taxRate, 22);
+  const safeTaxRate = Math.min(Math.max(rawTaxRate, 0), 90);
   const effectiveAnnualSalary = afterTax
     ? annualSalary * (1 - safeTaxRate / 100)
     : annualSalary;
