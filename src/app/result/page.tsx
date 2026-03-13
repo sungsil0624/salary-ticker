@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { calculateWage, formatWon } from "@/lib/calc";
 import { LiveEarningCounter } from "@/components/live-earning-counter";
 import { PurchaseTimeCalculator } from "@/components/purchase-time-calculator";
+import { ShareActions } from "@/components/share-actions";
 import Link from "next/link";
 
 type Props = {
@@ -70,6 +71,14 @@ export default async function ResultPage({ searchParams }: Props) {
             <span className="font-mono font-semibold text-slate-900">{formatWon(hourly)}원</span>{" "}
             입니다.
           </p>
+          <div className="mt-6">
+            <ShareActions
+              perSecond={perSecond}
+              hourly={hourly}
+              shareTitle="내 연봉, 1초에 얼마일까?"
+              shareDescription={`나는 지금 1초에 ${formatWon(perSecond)}원, 시급 ${formatWon(hourly)}원!`}
+            />
+          </div>
           {afterTax && (
             <p className="mt-2 text-sm text-slate-500">
               세후 추정 반영: 공제율 <span className="font-mono">{safeTaxRate}%</span> 적용 (계산 연봉{" "}
