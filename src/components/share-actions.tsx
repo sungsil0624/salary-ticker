@@ -113,7 +113,7 @@ function buildShareSvg({
 async function svgToPngFile(svg: string, filename: string, width: number, height: number) {
   const svgBlob = new Blob([svg], { type: "image/svg+xml;charset=utf-8" });
   const url = URL.createObjectURL(svgBlob);
-  const image = new Image();
+  const image = document.createElement("img");
   image.decoding = "async";
 
   try {
