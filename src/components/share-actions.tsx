@@ -118,14 +118,11 @@ async function svgToPngFile(svg: string, filename: string, width: number, height
 
   try {
     image.src = url;
-    if ("decode" in image) {
-      await image.decode();
-    } else {
-      await new Promise<void>((resolve, reject) => {
+    await (image.decode?.() ??
+      new Promise<void>((resolve, reject) => {
         image.onload = () => resolve();
         image.onerror = () => reject(new Error("스토리 카드 로딩에 실패했습니다."));
-      });
-    }
+      }));
 
     const canvas = document.createElement("canvas");
     canvas.width = width;
