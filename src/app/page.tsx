@@ -60,7 +60,7 @@ export default function HomePage() {
               직관적으로 확인해보세요
             </h1>
             <p className="mt-4 text-sm leading-6 text-slate-600 sm:text-base">
-              연봉과 월 근로시간을 입력하면 시급, 초당 수익, 오늘 출근 후 누적 수익까지 한 번에 계산합니다.
+              연봉과 월 근로시간을 입력하면 시급, 초당 수익, 오늘 출근 누적 수익까지 한 번에 계산합니다.
             </p>
             <div className="mt-6 flex flex-wrap gap-2 text-xs text-slate-600 sm:text-sm">
               <span className="rounded-full border border-slate-200 bg-white px-3 py-1">
